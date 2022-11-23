@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let input = [
+        "america",
+        "Bolivia",
+        "Bhutan",
+        "Costa Rica",
+        "bangladesh",
+        "Canada",
+        "Denmark",
+        "Egypt",
+        "Ethopia",
+        "india",
+        "argentina",
+        "pakistan",
+        "zamibia",
+        "Qutar",
+        "Australia",
+        "England",
+      ];
+
+      let FirstLetter = [];
+
+      input.forEach((input) => {
+        FirstLetter.push(input.split("")[0].toLowerCase());
+      });
+
+      let FilterFirstLetter = FirstLetter.filter(
+        (item, index) => FirstLetter.indexOf(item) === index
+      );
+
+      let obj = {};
+
+      FilterFirstLetter.forEach((letter, index) => {
+        input.forEach((item, key) => {
+          let uppercase = item.split("")[0].toUpperCase();
+
+          let each = item.split("");
+
+          each.splice(0, 1, uppercase);
+
+          if (letter === item.split("")[0].toLowerCase()) {
+            obj[letter] += "," + each.join("");
+          }
+        });
+      });
+
+      // console.log(obj)
+
+      let output = {};
+
+      FilterFirstLetter.forEach((item) => {
+        let array = obj[item].split(",");
+
+        let each = array.filter((item) => item !== "undefined");
+
+        output[item] = each;
+      });
+
+      console.log(output);
+    </script>
+  </body>
+</html>
